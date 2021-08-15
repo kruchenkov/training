@@ -9,7 +9,7 @@ public interface BookRepository {
 
     List<String> readWords(String fileName);
 
-    Map<String, Integer> mapWords(List<String> words, String inputLetter);
+    Map<String, Integer> mapWords(List<String> words, char inputLetter);
 
     Map<String, Integer> sortWords(Map<String, Integer> words);
 }
