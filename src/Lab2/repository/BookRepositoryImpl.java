@@ -84,6 +84,22 @@ public class BookRepositoryImpl implements BookRepository{
         return sortedWords;
     }
 
-
+    public Map<String, Integer> sortWords(Map<String, Integer> words) {
+        Map<String, Integer> sort = new LinkedHashMap<>();
+        List<String> list;
+        for (int i = Collections.max(words.values()); i > 0; i--) {
+            list = new LinkedList<>();
+            for (Map.Entry<String, Integer> entry : words.entrySet()) {
+                if (entry.getValue().equals(i)) {
+                    list.add(entry.getKey());
+                }
+            }
+            Collections.sort(list);
+            for (String s : list) {
+                sort.put(s, i);
+            }
+        }
+        return sort;
+    }
 
 }
