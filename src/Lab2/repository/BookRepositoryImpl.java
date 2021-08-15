@@ -1,11 +1,26 @@
 package Lab2.repository;
 
+import java.awt.print.Book;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class BookRepositoryImpl implements BookRepository{
+    public BookRepositoryImpl(){}
+
+    public BookRepositoryImpl(String fileName, char letter){
+        List<String> sentences = readWords(fileName);
+        Map<String, Integer> sortedWords = mapWords(sentences, letter);
+        sortedWords = sortWords(sortedWords);
+
+        for (Map.Entry entry : sortedWords.entrySet()) {
+            System.out.println("Key: " + entry.getKey() + " Value: "
+                    + entry.getValue());
+        }
+    }
+
     FileInputStream fis = null;
+
 
     public List<String> readSentence(String fileName) {
 
@@ -66,15 +81,16 @@ public class BookRepositoryImpl implements BookRepository{
         return words;
     }
 
-    public Map<String, Integer> mapWords(List<String> words, String inputLetter) {
+    public Map<String, Integer> mapWords(List<String> words, char inputLetter) {
         Map<String, Integer> sortedWords = new HashMap<>();
         Iterator<String> iterator = words.iterator();
+        String w = String.valueOf(inputLetter);
         while (iterator.hasNext()) {
             int countLetters = 0;
             String word = iterator.next();
-            if (word.toLowerCase().contains(inputLetter)) {
+            if (word.toLowerCase().contains(w)) {
                 for (char letter : word.toCharArray()) {
-                    if (String.valueOf(letter).equals(inputLetter)) {
+                    if (String.valueOf(letter).equals(w)) {
                         countLetters++;
                     }
                 }
