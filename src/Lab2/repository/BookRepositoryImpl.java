@@ -66,6 +66,24 @@ public class BookRepositoryImpl implements BookRepository{
         return words;
     }
 
+    public Map<String, Integer> mapWords(List<String> words, String inputLetter) {
+        Map<String, Integer> sortedWords = new HashMap<>();
+        Iterator<String> iterator = words.iterator();
+        while (iterator.hasNext()) {
+            int countLetters = 0;
+            String word = iterator.next();
+            if (word.toLowerCase().contains(inputLetter)) {
+                for (char letter : word.toCharArray()) {
+                    if (String.valueOf(letter).equals(inputLetter)) {
+                        countLetters++;
+                    }
+                }
+                sortedWords.put(word, countLetters);
+            }
+        }
+        return sortedWords;
+    }
+
 
 
 }
