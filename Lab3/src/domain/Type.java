@@ -9,6 +9,8 @@ public enum Type {
         return name;
     }
 
+    Type(){}
+
     Type(String name) {
         this.name = name;
     }
