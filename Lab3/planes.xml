@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <planes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://www.example.org/planes"
         xsi:schemaLocation="http://www.example.org/planes planes.xsd">
@@ -7,10 +7,10 @@
         <origin>France</origin>
         <chars>
             <type>Fighter</type>
-            <sits>1</sits>
-            <gun caliber="7.56mm"/>
-            <air-to-air-missiles>20</air-to-air-missiles>
-            <air-to-ground-missiles>10</air-to-ground-missiles>
+            <sits>2</sits>
+            <gun>"7.56mm"</gun>
+            <airtoairmissiles>20</airtoairmissiles>
+            <airtogroundmissiles>10</airtogroundmissiles>
             <radar>true</radar>
         </chars>
         <parameters>
@@ -19,5 +19,23 @@
             <height>1231231</height>
         </parameters>
         <price>12331</price>
+    </plane>
+    <plane id="ID-2">
+        <model>F-140</model>
+        <origin>America</origin>
+        <chars>
+            <type>Interceptor</type>
+            <sits>2</sits>
+            <gun>"7.56mm"</gun>
+            <airtoairmissiles>20</airtoairmissiles>
+            <airtogroundmissiles>10</airtogroundmissiles>
+            <radar>false</radar>
+        </chars>
+        <parameters>
+            <length>123</length>
+            <width>21312</width>
+            <height>2311</height>
+        </parameters>
+        <price>123122</price>
     </plane>
 </planes>
