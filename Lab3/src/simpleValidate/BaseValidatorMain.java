@@ -16,8 +16,8 @@ public class BaseValidatorMain {
     public static void main(String[] args) {
         System.out.println("Working Directory = " + System.getProperty("user.dir"));
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-        String fileName = System.getProperty("user.dir") + "/Lab4/planes.xml";
-        String schemaName = System.getProperty("user.dir") + "/Lab4/planes.xsd";
+        String fileName = System.getProperty("user.dir") + "/Lab3/planes.xml";
+        String schemaName = System.getProperty("user.dir") + "/Lab3/planes.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);
         try {
