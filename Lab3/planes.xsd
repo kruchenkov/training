@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/planes"
-        xmlns:tns="http://www.example.org/planes" elementFormDefault="qualified">
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.org/planes"
+        xmlns:tns="http://www.example.org/planes"
+        elementFormDefault="qualified">
     <element name="planes">
         <complexType>
             <sequence>
@@ -13,22 +15,21 @@
             <element name="model" type="string"/>
             <element name="origin" type="string"/>
             <element name="chars" type="tns:Chars"/>
-            <element name="parameters">
-                <complexType>
-                    <sequence>
-                        <element name="length" type="long"/>
-                        <element name="width" type="long"/>
-                        <element name="height" type="long"/>
-                    </sequence>
-                </complexType>
-            </element>
+            <element name="parameters" type="tns:Parameters"/>
             <element name="price" type="long"/>
         </sequence>
         <attribute name="id" type="ID" use="required"/>
     </complexType>
+    <complexType name="Parameters">
+        <sequence>
+            <element name="length" type="long"/>
+            <element name="width" type="long"/>
+            <element name="height" type="long"/>
+        </sequence>
+    </complexType>
     <complexType name="Chars">
         <sequence>
-            <element name="type">
+            <element name="type" >
                 <simpleType>
                     <restriction base="string">
                         <enumeration value="Support"/>
@@ -47,13 +48,27 @@
                     </restriction>
                 </simpleType>
             </element>
-            <element name="gun" minOccurs="0">
-                <complexType>
-                    <attribute name="caliber" type="string" use="required"/>
-                </complexType>
+            <element name="gun" type="string">
+                <!--<complexType>
+                    <attribute name="caliber" type="string" use="required" />
+                </complexType>-->
             </element>
-            <element name="air-to-air-missiles" type="byte" minOccurs="0" maxOccurs="20"/>
-            <element name="air-to-ground-missiles" type="byte" minOccurs="0" maxOccurs="10"/>
+            <element name="airtoairmissiles">
+                <simpleType>
+                    <restriction base="byte">
+                        <minInclusive value="0"/>
+                        <maxInclusive value="20"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="airtogroundmissiles" >
+                <simpleType>
+                    <restriction base="byte">
+                        <minInclusive value="0"/>
+                        <maxInclusive value="10"/>
+                    </restriction>
+                </simpleType>
+            </element>
             <element name="radar" type="boolean"/>
         </sequence>
     </complexType>
