@@ -1,4 +1,4 @@
-package xml;
+package simpleValidate;
 
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -12,16 +12,10 @@ import javax.xml.validation.Validator;
 import java.io.File;
 import java.io.IOException;
 
-public class PlaneXMLValidator extends DefaultHandler {
-    public static final String SCHEMA_FILE_NAME = "planes.xsd";
-
+public class PlaneXmlValidator extends DefaultHandler {
     private StringBuilder error = new StringBuilder();
-
-    private String fileName;
-
-    public PlaneXMLValidator(String fileName) {
-        this.fileName = fileName;
-    }
+    private String fileName = System.getProperty("user.dir") + "/Lab4/planes.xml";
+    private String schemaName = System.getProperty("user.dir") + "/Lab4/planes.xsd";
 
     private StringBuilder getErrorInfo(SAXParseException e) {
         StringBuilder builder = new StringBuilder();
@@ -59,7 +53,7 @@ public class PlaneXMLValidator extends DefaultHandler {
     public boolean validate() throws IOException {
         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         try {
-            Schema schema = factory.newSchema(new File(SCHEMA_FILE_NAME));
+            Schema schema = factory.newSchema(new File(schemaName));
             Validator validator = schema.newValidator();
             validator.setErrorHandler(this);
             validator.validate(new StreamSource(fileName));
