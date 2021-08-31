@@ -14,8 +14,8 @@ import java.io.IOException;
 
 public class PlaneXmlValidator extends DefaultHandler {
     private StringBuilder error = new StringBuilder();
-    private String fileName = System.getProperty("user.dir") + "/Lab4/planes.xml";
-    private String schemaName = System.getProperty("user.dir") + "/Lab4/planes.xsd";
+    private String fileName = System.getProperty("user.dir") + "/Lab3/planes.xml";
+    private String schemaName = System.getProperty("user.dir") + "/Lab3/planes.xsd";
 
     private StringBuilder getErrorInfo(SAXParseException e) {
         StringBuilder builder = new StringBuilder();
@@ -25,19 +25,19 @@ public class PlaneXmlValidator extends DefaultHandler {
     }
 
     @Override
-    public void warning(SAXParseException e) throws SAXException {
+    public void warning(SAXParseException e) {
         error.append("WARNING: ");
         error.append(getErrorInfo(e));
     }
 
     @Override
-    public void error(SAXParseException e) throws SAXException {
+    public void error(SAXParseException e) {
         error.append("ERROR: ");
         error.append(getErrorInfo(e));
     }
 
     @Override
-    public void fatalError(SAXParseException e) throws SAXException {
+    public void fatalError(SAXParseException e) {
         error.append("FATALERROR: ");
         error.append(getErrorInfo(e));
     }
