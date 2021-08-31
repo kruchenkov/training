@@ -6,7 +6,7 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXParseException;
 
 public class PlaneErrorHandler implements ErrorHandler {
-    private static Logger logger = LogManager.getLogger(System.getProperty("user.dir") + "/Lab4/planes.xsd");
+    private static Logger logger = LogManager.getLogger(System.getProperty("user.dir") + "/Lab3/planes.xsd");
 
     public void warning(SAXParseException e) {
         logger.warn(getLineColumnNumber(e) + "-" + e.getMessage());
